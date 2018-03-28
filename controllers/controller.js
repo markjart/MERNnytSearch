@@ -1,12 +1,7 @@
 // Node Dependencies
 var express = require('express');
 var router = express.Router();
-
-
-// Import the Article model
 var Article = require('../models/Article.js');
-
-
 
 // Main GET - This will display the ReactJS application.
 router.get("/", function(req, res) {
@@ -27,14 +22,13 @@ router.get("/api/saved", function(req, res) {
         res.json(docs);
       }
    });
-
 });
-
 
 // API POST - your components will use this to save an article to the database.
 router.post("/api/saved", function(req, res) {
   
-  // Using the Article model, create a new entry (note that the "req.bidy" object has the exact same key-value pairs as the model)
+  // Using the Article model, create a new entry
+  //note that the "req.body" object has the exact same key-value pairs as the model
   var entry = new Article (req.body);
 
   // Save the entry to MongoDB
@@ -53,7 +47,6 @@ router.post("/api/saved", function(req, res) {
 
 });
 
-
 // API DELETE - your components will use this to delete a saved article in the database
 router.post("/api/delete/:articleMongoId", function(req, res) {
   console.log(req.params.articleMongoId)
@@ -68,16 +61,12 @@ router.post("/api/delete/:articleMongoId", function(req, res) {
       res.sendStatus(200);
     }
   });
-
 });
-
 
 // CATCH ALL "*" - This redirect user to the "/" route for any unknown cases
 router.get("*", function(req, res) {
   res.redirect("/");
 });
 
-
-// ================================
 // Export Router to Server.js
 module.exports = router;

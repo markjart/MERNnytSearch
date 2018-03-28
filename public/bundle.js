@@ -22850,24 +22850,18 @@
 	
 	// NY Times API Request Function
 	var articleQuery = function articleQuery(topic, beginYear, endYear) {
-	
 	  var authKey = "2104433747024026827429cbc0ec1631";
-	
 	  var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + topic + "&begin_date=" + beginYear + "0101" + "&end_date=" + endYear + "1231";
 	
 	  // Create a JavaScript *Promise*
 	  return new Promise(function (fulfill, reject) {
 	    // NY Times API get request
 	    axios.get(queryURL).then(function (response) {
-	
 	      var result = [];
-	
 	      // If get get a result, return only the first 10 articles
 	      if (response.data.response.docs[0]) {
-	
 	        for (var i = 0; i < response.data.response.docs.length; i++) {
 	          // Break out of the loop if there are more than 10 entries
-	
 	          if (i == 10) {
 	            break;
 	          } else {
@@ -22875,7 +22869,6 @@
 	            result.push(response.data.response.docs[i]);
 	          }
 	        }
-	
 	        // Return the array of articles via *Promise*
 	        fulfill(result);
 	      } else {

@@ -1,149 +1,200 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- Tab Title -->
-    <title>NY Times React</title>
-    <!-- Favicon -->
-    <link rel="icon" href="img/new-york-times-icon.png">
-    <!-- View Port Size -->
+<!DOCTYPE: html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NYT MERN Stack Search Tool</title>
+    <link rel="icon" href="../img/new-york-times-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-
-  <body style="background-image: url(../public/img/newspaper-texture.jpg); padding: 18px; font-family: 'Times New Roman', Times, serif;">
-
-    <div class="container" >
-
-
-      <!-- Header -->
-      <div class="page-header">
-        <h1 class="text-center"><img style="width: 70%;" src="../public/img/nyt-header.svg" alt="The New York Times"></h1>
-        <h4 class="text-center">Search and Save Articles</h4>
-      </div>
-
-
-      <!-- Search Form -->
-      <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <h3 class="panel-title text-center" style="font-size: 20px;"><i><b>Search</b></i></h3>
-        </div>
-
-        <div class="panel-body text-center">
-          <form role="form">
-
-            <div class="form-group">
-              <label for="topic" class="text-center">Topic</label>
-              <input type="text" class="form-control" id="topic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body style="background-image: url(public/img/newspapers.jpg);">
+    <div id="app">
+        <div data-reactroot="" class="container" style="background-color: white; border-style: solid; border-width: 1px;">
+            <div class="page-header">
+                <h4 class="text-center">Search and Save Articles from...</h4>
+                <h1 class="text-center">
+                    <img src="../img/nyt-header.svg" alt="The New York Times" style="width: 70%;">
+                </h1>
             </div>
-
-            <div class="form-group">
-              <label for="startYear">Start Year</label>
-              <input type="text" class="form-control" id="startYear">
+            <div class="panel panel-default col-md-6">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center" style="font-size: 20px;">
+                        <strong>Search</strong>
+                    </h3>
+                </div>
+                <div class="panel-body searchResults text-center">
+                    <form role="form">
+                        <div class="form-group col-md-offset-3 col-md-6">
+                            <label for="topic" class="text-center">Topic</label>
+                            <input type="text" class="form-control formQuery text-center" id="topic">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-offset-3 col-md-6">
+                            <label for="startYear">Start Year</label>
+                            <input type="text" class="form-control formQuery text-center" id="startYear">
+                        </div>
+                        <br>
+                        <div class="form-group col-md-offset-3 col-md-6">
+                            <label for="endYear">End Year</label>
+                            <input type="text" class="form-control formQuery text-center" id="endYear">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-info col-md-offset-4 col-md-4" id="searchBtn">Search</button>
+                    </form>
+                </div>
             </div>
-
-            <div class="form-group">
-              <label for="endYear">End Year</label>
-              <input type="text" class="form-control" id="endYear">
+            <div class="panel panel-default col-md-6">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center" style="font-size: 20px;">
+                        <strong>Results</strong>
+                    </h3>
+                </div>
+                <div class="panel-body searchResults">
+                    <ul class="list-group col-md-12"></ul>
+                </div>
             </div>
-
-            <button type="submit" class="btn btn-danger" id="searchBtn">Search</button>
-
-          </form>
+            <div class="panel panel-default panelHeader col-md-12">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center" style="font-size: 20px;">
+                        <strong>Saved Articles</strong>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group col-md-8 col-md-offset-2">
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/aponline/2018/03/25/us/politics/ap-us-trump-russia-gulf-money.html"
+                                            target="_new" style="color: black;">Mueller Probe Witness Secretly Backed UAE Agenda in Congress</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    2018-03-26
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbea1148fd990014df42f1">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/aponline/2018/03/26/us/politics/ap-us-trump-russia-gulf-money.html"
+                                            target="_new" style="color: black;">Witness in Mueller Probe Aided UAE Agenda in Congress</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                    2018-03-26   
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbea1248fd990014df42f2">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/2018/03/26/briefing/russia-stormy-daniels-facebook.html"
+                                            target="_new" style="color: black;">Russia, Stormy Daniels, Facebook: Your Tuesday Briefing</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                    2018-03-26 
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbea2448fd990014df42f5">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/2018/03/23/opinion/students-march-for-our-lives-washington.html"
+                                            target="_new" style="color: black;">March for Our Lives: The Students Arrive in Washington</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    2018-03-23  
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbea2f48fd990014df42f8">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/2018/03/16/reader-center/stephen-hawking-death.html"
+                                            target="_new" style="color: black;">‘He Lives on as All Great Philosophers Do’: Readers Mourn Stephen Hawking</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    2018-03-16  
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbebde48fd990014df42fa">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/slideshow/2018/03/14/science/space/stephen-hawking-physicist-and-author-dies.html"
+                                            target="_new" style="color: black;">The Expansive Life of Stephen Hawking</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    2018-03-14 
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbebdf48fd990014df42fb">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/2018/02/11/arts/television/star-trek-discovery-season-1-episode-15-finale-recap.html"
+                                            target="_new" style="color: black;">‘Star Trek: Discovery’ Season Finale: Wrapping Up</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    2018-02-12 
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbebe448fd990014df42fc">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item" style="border-width: 0px;">
+                            <div class="input-group">
+                                <div type="text" class="form-control">
+                                    <b>
+                                        <a href="https://www.nytimes.com/2018/01/16/arts/television/star-trek-discovery-season-1-episode-11-the-wolf-inside.html"
+                                            target="_new" style="color: black;">‘Star Trek: Discovery’ Season 1, Episode 11: Secrets Abound</a>
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                    2018-01-16
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button" value="5abbebe548fd990014df42fd">Remove</button>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <h4 class="text-center" id="footerText">
+                A
+                <a href="http://mern.io/" target="_blank">MERN</a>
+                Search Application Homework by
+                <a href="https://github.com/markjart" target="_blank">Mark Jasinski</a>
+            </h4>
         </div>
-      </div>
-
-
-
-      <!-- Results -->
-      <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <h3 class="panel-title text-center" style="font-size: 20px;"><i><b>Results</b></i></h3>
-        </div>
-
-        <div class="panel-body">
-          <ul class="list-group">
-
-            <li class="list-group-item" style="border-width: 0px;">
-              <div class="input-group">
-                <div type="text" class="form-control"><b>Obama Gives Commencement</b></div>
-                <span class="input-group-btn">
-                  <button class="btn btn-success" type="button">Save</button>
-                </span>
-              </div>
-            </li>
-
-
-            <li class="list-group-item" style="border-width: 0px;">
-              <div class="input-group">
-                <div type="text" class="form-control"><b>Aliens Invade Paris</b></div>
-                <span class="input-group-btn">
-                  <button class="btn btn-success" type="button">Save</button>
-                </span>
-              </div>
-            </li>
-
-
-            <li class="list-group-item" style="border-width: 0px;">
-              <div class="input-group">
-                <div type="text" class="form-control"><b>Trump Steals Nuclear Codes</b></div>
-                <span class="input-group-btn">
-                  <button class="btn btn-success" type="button">Save</button>
-                </span>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-
-
-
-
-      <!-- Saved Articles -->
-      <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <h3 class="panel-title text-center" style="font-size: 20px;"><i><b>Saved Articles</b></i></h3>
-        </div>
-
-        <div class="panel-body">
-          <ul class="list-group">
-
-            <li class="list-group-item" style="border-width: 0px;">
-              <div class="input-group">
-                <div type="text" class="form-control"><b>Giant Panda Rampages through NYC</b></div>
-                <span class="input-group-btn">
-                  <button class="btn btn-danger" type="button">Remove</button>
-                </span>
-              </div>
-            </li>
-
-
-            <li class="list-group-item" style="border-width: 0px;">
-              <div class="input-group">
-                <div type="text" class="form-control"><b>Global Warming Is a Hoax</b></div>
-                <span class="input-group-btn">
-                  <button class="btn btn-danger" type="button">Remove</button>
-                </span>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-
-
-
-
     </div>
-  
+    <script src="./bundle.js"></script>
 
-
-    
-  </body>
+</body>
 
 </html>

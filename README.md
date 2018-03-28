@@ -1,7 +1,7 @@
-# :newspaper: NY Times ReactJS App :statue_of_liberty:
+# NY Times MERN Search App 
 A `MERN` application where users can query, display, and save articles from the [New York Times Article Search API](http://developer.nytimes.com/). Users can remove saved articles as well.
 
-Please check out the deployed version in Heroku [here](https://ny-times-react.herokuapp.com/)!
+Please check out the deployed version in Heroku [here](https://blooming-fortress-19285.herokuapp.com/)!
 
 Click on the headlines to be re-directed to the full New York Times articles.
 
